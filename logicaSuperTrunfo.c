@@ -139,13 +139,13 @@ int main() {
     printf("-------------\n");
     printf("Comparação de cartas (Atributo: População):\n");
 
-    printf("Carta 1 - %s (%c): %lu", city_name_01, state_01, population_01);
-    printf("Carta 2 - %s (%c): %lu", city_name_02, state_02, population_02);
+    printf("\tCarta 1 - %s (%c): %lu\n", city_name_01, state_01, population_01);
+    printf("\tCarta 2 - %s (%c): %lu\n", city_name_02, state_02, population_02);
 
     if (population_01 > population_02) {
-        printf("Resultado: Carta 1 (%s) venceu!", city_name_01);
+        printf("\tResultado: Carta 1 (%s) venceu!\n", city_name_01);
     } else {
-        printf("Resultado: Carta 1 (%s) venceu!", city_name_02);
+        printf("\tResultado: Carta 1 (%s) venceu!\n", city_name_02);
     }
 
     return 0;
