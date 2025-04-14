@@ -108,6 +108,8 @@ int main() {
     population_density_02 = (float) population_02 / area_02;
     gdp_per_percapit_02 = pib_02 / (float) population_02;
 
+    double superpower_01 = population_01 + area_01 + pib_01 + number_of_tourist_attractions_01 + (1/population_density_01) + gdp_per_percapit_01;
+    double superpower_02 = population_01 + area_01 + pib_01 + number_of_tourist_attractions_01 + (1/population_density_01) + gdp_per_percapit_01;
 
     // Exibindo informaçãoes da primeira cidade
     printf("---------------------------------------\n");
@@ -134,33 +136,17 @@ int main() {
     printf("\tDensidade Populacional: %.2f\n", population_density_02);
     printf("\tPIB per Capita: %.2f\n", gdp_per_percapit_02);
 
-
     printf("-------------\n");
-    printf("Comparação de Cartas:\n");
+    printf("Comparação de cartas (Atributo: População):\n");
 
-    printf("\tPopulação:");
-    printf("A Carta venceu: (%i)\n", population_01 > population_02);
+    printf("Carta 1 - %s (%c): %lu", city_name_01, state_01, population_01);
+    printf("Carta 2 - %s (%c): %lu", city_name_02, state_02, population_02);
 
-    printf("\tArea:");
-    printf("A Carta venceu: (%i)\n", area_01 > area_02);
-
-    printf("\tPIB:");
-    printf("A Carta venceu: (%i)\n", pib_01 > pib_02);
-
-    printf("\tNúmero de pontos turisticos:");
-    printf("A Carta venceu: (%i)\n", number_of_tourist_attractions_01 > number_of_tourist_attractions_02);
-
-    printf("\tDensidade Populacional:");
-    printf("A Carta venceu: (%i)\n", population_density_01 < population_density_02);
-
-    printf("\tPIB per Capita:");
-    printf("A Carta venceu: (%i)\n", gdp_per_percapit_01 > gdp_per_percapit_02);
-
-    double superpower_01 = population_01 + area_01 + pib_01 + number_of_tourist_attractions_01 + (1/population_density_01) + gdp_per_percapit_01;
-    double superpower_02 = population_01 + area_01 + pib_01 + number_of_tourist_attractions_01 + (1/population_density_01) + gdp_per_percapit_01;
-    printf("\tSuperpoder:");
-    printf("A Carta venceu: (%i)\n", superpower_01 > superpower_02);
-
+    if (population_01 > population_02) {
+        printf("Resultado: Carta 1 (%s) venceu!", city_name_01);
+    } else {
+        printf("Resultado: Carta 1 (%s) venceu!", city_name_02);
+    }
 
     return 0;
 }
