@@ -11,7 +11,8 @@ int main()
     // Definição das variáveis para armazenar as propriedades das cidades
     // Você pode utilizar o código do primeiro desafio
 
-    short int option;
+    short int option_01;
+    short int option_02;
 
     char state_01;
     char city_code_01[5];
@@ -33,6 +34,9 @@ int main()
     int number_of_tourist_attractions_02 = 0;
     float population_density_02 = 0.0;
     float gdp_per_percapit_02 = 0.0;
+
+    short result_01 = 0;
+    short result_02 = 0;
 
     // Leitura dos dados da primeira cidade
     printf("---------------------------------------\n");
@@ -107,7 +111,7 @@ int main()
 
     // Exibindo o menu
     printf("-------------\n");
-    printf("Escolha o atributo para comparação das cartas:\n");
+    printf("Escolha o primeiro atributo para comparação das cartas:\n");
     printf("1. Nome do estado (Apenas exibir)\n");
     printf("2. População\n");
     printf("3. Area\n");
@@ -115,18 +119,43 @@ int main()
     printf("5. Número de pontos turisticos\n");
     printf("6. Densidade Populacional\n");
     printf("Digite a opção:");
-    scanf("%hu", &option);
+    scanf("%hu", &option_01);
 
-    short result = 0;
+    printf("-------------\n");
+    printf("Escolha o segundo atributo para comparação das cartas:\n");
+    printf("1. Nome do estado (Apenas exibir)\n");
+    printf("2. População\n");
+    printf("3. Area\n");
+    printf("4. PIB\n");
+    printf("5. Número de pontos turisticos\n");
+    printf("6. Densidade Populacional\n");
+    printf("Digite a opção:");
+    scanf("%hu", &option_02);
+
+    if (option_01 == option_02)
+    {
+        printf("O segundo atributo é igual o primeiro, por favor escolha novamente!\n");
+        printf("-------------\n");
+        printf("Escolha o segundo atributo para comparação das cartas:\n");
+        printf("1. Nome do estado (Apenas exibir)\n");
+        printf("2. População\n");
+        printf("3. Area\n");
+        printf("4. PIB\n");
+        printf("5. Número de pontos turisticos\n");
+        printf("6. Densidade Populacional\n");
+        printf("Digite a opção:");
+        scanf("%hu", &option_02);
+    }
 
     printf("-------------\n");
 
-    switch (option)
+    switch (option_01)
     {
     case 1:
         printf("Exibindo informação de cartas (Atributo: Nome do estado):\n");
         printf("\tCarta 1 - %s (%c)", city_name_01, state_01);
         printf("\tCarta 2 - %s (%c)", city_name_02, state_02);
+        result_01 = 0;
         break;
     case 2:
         printf("Comparação de cartas (Atributo: População):\n");
@@ -134,15 +163,15 @@ int main()
         printf("\tCarta 2 - %s (%c): %lu\n", city_name_02, state_02, population_02);
         if (population_01 > population_02)
         {
-            result = 1;
+            result_01 = 1;
         }
         else if (population_01 < population_02)
         {
-            result = 2;
+            result_01 = 0;
         }
         else
         {
-            result = 0;
+            result_01 = 0;
         }
         break;
     case 3:
@@ -151,15 +180,15 @@ int main()
         printf("\tCarta 2 - %s (%c): %.2f\n", city_name_02, state_02, area_02);
         if (area_01 > area_02)
         {
-            result = 1;
+            result_01 = 1;
         }
         else if (area_01 < area_02)
         {
-            result = 2;
+            result_01 = 0;
         }
         else
         {
-            result = 0;
+            result_01 = 0;
         }
         break;
     case 4:
@@ -168,15 +197,15 @@ int main()
         printf("\tCarta 2 - %s (%c): %.2f\n", city_name_02, state_02, pib_02);
         if (pib_01 > pib_02)
         {
-            result = 1;
+            result_01 = 1;
         }
         else if (pib_01 < pib_02)
         {
-            result = 2;
+            result_01 = 0;
         }
         else
         {
-            result = 0;
+            result_01 = 0;
         }
         break;
     case 5:
@@ -185,15 +214,15 @@ int main()
         printf("\tCarta 2 - %s (%c): %i\n", city_name_02, state_02, number_of_tourist_attractions_02);
         if (number_of_tourist_attractions_01 > number_of_tourist_attractions_02)
         {
-            result = 1;
+            result_01 = 1;
         }
         else if (number_of_tourist_attractions_01 < number_of_tourist_attractions_02)
         {
-            result = 2;
+            result_01 = 0;
         }
         else
         {
-            result = 0;
+            result_01 = 0;
         }
         break;
     case 6:
@@ -202,15 +231,15 @@ int main()
         printf("\tCarta 2 - %s (%c): %.2f\n", city_name_02, state_02, population_density_02);
         if (population_density_01 < population_density_02)
         {
-            result = 1;
+            result_01 = 1;
         }
         else if (population_density_01 > population_density_02)
         {
-            result = 2;
+            result_01 = 0;
         }
         else
         {
-            result = 0;
+            result_01 = 0;
         }
         break;
 
@@ -219,21 +248,116 @@ int main()
         break;
     }
 
-    if (option != 1)
+    switch (option_02)
     {
-        switch (result)
+    case 1:
+        printf("Exibindo informação de cartas (Atributo: Nome do estado):\n");
+        printf("\tCarta 1 - %s (%c)", city_name_01, state_01);
+        printf("\tCarta 2 - %s (%c)", city_name_02, state_02);
+        result_02 = 0;
+        break;
+    case 2:
+        printf("Comparação de cartas (Atributo: População):\n");
+        printf("\tCarta 1 - %s (%c): %lu\n", city_name_01, state_01, population_01);
+        printf("\tCarta 2 - %s (%c): %lu\n", city_name_02, state_02, population_02);
+        if (population_01 > population_02)
         {
-        case 0:
-            printf("\tResultado: Empate!");
-            break;
-        case 1:
-            printf("\tResultado: Carta 1 (%s) venceu!\n", city_name_01);
-            break;
-        case 2:
-            printf("\tResultado: Carta 1 (%s) venceu!\n", city_name_01);
+            result_02 = 1;
+        }
+        else if (population_01 < population_02)
+        {
+            result_02 = 0;
+        }
+        else
+        {
+            result_02 = 0;
+        }
+        break;
+    case 3:
+        printf("Comparação de cartas (Atributo: Area):\n");
+        printf("\tCarta 1 - %s (%c): %.2f\n", city_name_01, state_01, area_01);
+        printf("\tCarta 2 - %s (%c): %.2f\n", city_name_02, state_02, area_02);
+        if (area_01 > area_02)
+        {
+            result_02 = 1;
+        }
+        else if (area_01 < area_02)
+        {
+            result_02 = 0;
+        }
+        else
+        {
+            result_02 = 0;
+        }
+        break;
+    case 4:
+        printf("Comparação de cartas (Atributo: PIB):\n");
+        printf("\tCarta 1 - %s (%c): %.2f\n", city_name_01, state_01, pib_01);
+        printf("\tCarta 2 - %s (%c): %.2f\n", city_name_02, state_02, pib_02);
+        if (pib_01 > pib_02)
+        {
+            result_02 = 1;
+        }
+        else if (pib_01 < pib_02)
+        {
+            result_02 = 0;
+        }
+        else
+        {
+            result_02 = 0;
+        }
+        break;
+    case 5:
+        printf("Comparação de cartas (Atributo: Número de pontos turisticos):\n");
+        printf("\tCarta 1 - %s (%c): %i\n", city_name_01, state_01, number_of_tourist_attractions_01);
+        printf("\tCarta 2 - %s (%c): %i\n", city_name_02, state_02, number_of_tourist_attractions_02);
+        if (number_of_tourist_attractions_01 > number_of_tourist_attractions_02)
+        {
+            result_02 = 1;
+        }
+        else if (number_of_tourist_attractions_01 < number_of_tourist_attractions_02)
+        {
+            result_02 = 0;
+        }
+        else
+        {
+            result_02 = 0;
+        }
+        break;
+    case 6:
+        printf("Comparação de cartas (Atributo: Densidade Populacional):\n");
+        printf("\tCarta 1 - %s (%c): %.2f\n", city_name_01, state_01, population_density_01);
+        printf("\tCarta 2 - %s (%c): %.2f\n", city_name_02, state_02, population_density_02);
+        if (population_density_01 < population_density_02)
+        {
+            result_02 = 1;
+        }
+        else if (population_density_01 > population_density_02)
+        {
+            result_02 = 0;
+        }
+        else
+        {
+            result_02 = 0;
+        }
+        break;
 
-        default:
-            break;
+    default:
+        printf("Opção invalida escolhida!");
+        break;
+    }
+
+    // Desconsidere quando foi visualizado o nome (Caso extra)
+    if (option_01 != 1 && option_02 != 1)
+    {
+        if (result_01 != result_02)
+        {
+            printf("\tResultado: Empate!");
+        }
+        else
+        {
+            // NOTE Use do operador ternário
+            printf("\tResultado: Carta %i (%s) venceu!\n", result_01 && result_02 ? 1 : 2 , result_01 && result_02 ? city_name_01 : city_name_02);
         }
     }
 
